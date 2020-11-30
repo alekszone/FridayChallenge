@@ -8,9 +8,9 @@ render(){
 return(
 <div className="container-fluid home-content body">
       <Row className=" w-100 ml-0 mr-0">
-<NavBar />
-<Trending />
-<Footer />
+
+
+
 </Row>
 </div>
 

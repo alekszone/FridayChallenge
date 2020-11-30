@@ -1,5 +1,5 @@
 import React from 'react';
-
+import NavBar from './component/NavBar'
 import './App.css';
 import Home from './component/Home';
 import AlbumPage from './component/AlbumPage'
