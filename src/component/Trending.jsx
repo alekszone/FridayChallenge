@@ -10,8 +10,8 @@ class Trending extends Component {
         sm={12}
         md={12}
         lg={12}
-        className=" pb-sm-4"
-        style={{ backgroundColor: "white" }}
+        className=" m-0 p-0"
+        // style={{ backgroundColor: "white" }}
       >
         <TrendingNav />
 

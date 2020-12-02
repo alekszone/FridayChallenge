@@ -2,3 +2,12 @@
   width: 22% !important;
   background-color: transparent !important;
 }
+.home {
+  background-image: linear-gradient(
+    165deg,
+    #0a1020 70%,
+    #0a1020 75%
+  ) !important;
+  height: 90vh;
+  /* overflow-y: auto; */
+}

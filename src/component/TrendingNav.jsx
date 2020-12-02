@@ -29,12 +29,12 @@ const NavBar = () => {
               </a>
             </li>
             <li className="nav-item mr-3">
-              <a className="nav-link bolder" href="#">
+              <a className="nav-link bolder mt-2" href="#">
                 Moods and genres
               </a>
             </li>
             <li className="nav-item mr-3">
-              <a className="nav-link bolder" href="#">
+              <a className="nav-link bolder mt-2" href="#">
                 New Releases
               </a>
             </li>

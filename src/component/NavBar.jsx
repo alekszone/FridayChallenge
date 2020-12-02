@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Col, Row } from "react-bootstrap";
 import Styles from "./style.module.css";
-// import {withRouter, conect}
+import { withRouter } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -18,11 +18,12 @@ const NavBar = () => {
               </li>
               <li className="mt-3  nav-item active">
                 <a href="/">
-                  <i className="fa fa-home mr-3"></i>Home
+                  <i className="fa fa-home mr-3" />
+                  Home
                 </a>
               </li>
               <li className="mt-3  nav-item">
-                <a href="search.html">
+                <a href="search">
                   <i class="fa fa-search mr-3"></i>Search
                 </a>
               </li>
@@ -71,4 +72,4 @@ const NavBar = () => {
     </Navbar>
   );
 };
-export default NavBar;
+export default withRouter(NavBar);
