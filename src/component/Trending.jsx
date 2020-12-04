@@ -10,22 +10,19 @@ class Trending extends Component {
         sm={12}
         md={12}
         lg={12}
-        className=" m-0 p-0"
+
         // style={{ backgroundColor: "white" }}
       >
         <TrendingNav />
 
-        <Row>
-          <Col xs={10}></Col>
-        </Row>
         <Row className=" ml-5">
           <Col xs={10}>
             <div id="rock">
               <h2>Eminem</h2>
               <Row
-                xs={1}
-                sm={2}
-                lg={3}
+                xs={4}
+                sm={4}
+                lg={4}
                 xl={4}
                 className=" imgLinks py-3"
                 id="Eminem"
@@ -38,9 +35,9 @@ class Trending extends Component {
             <div id="rock">
               <h2>Metallica</h2>
               <Row
-                xs={1}
-                sm={2}
-                lg={3}
+                xs={4}
+                sm={4}
+                lg={4}
                 xl={4}
                 className=" imgLinks py-3"
                 id="Metallica"
@@ -53,9 +50,9 @@ class Trending extends Component {
             <div id="rock">
               <h2>Behemoth</h2>
               <Row
-                xs={1}
-                sm={2}
-                lg={3}
+                xs={4}
+                sm={4}
+                lg={4}
                 xl={4}
                 className=" imgLinks py-3"
                 id="Behemoth"
