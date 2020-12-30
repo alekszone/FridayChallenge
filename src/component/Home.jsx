@@ -6,7 +6,7 @@ import Trending from "./Trending";
 
 class Home extends React.Component {
   render() {
-    return <Trending className={`${Styles.home}`} />;
+    return <Trending />;
   }
 }
 

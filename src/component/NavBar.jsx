@@ -12,7 +12,10 @@ const NavBar = () => {
           <Col xs={12} sm={12} md={12} lg={12}>
             <ul className=" nav flex-column justify-content-center  mb-3  mb-auto">
               <li className="nav-item mt-2  w-100 justify-content-center align-items-center">
-                <i className="fa fa-spotify" style={{ fontSize: "35px" }}>
+                <i
+                  className="fa fa-spotify"
+                  style={{ fontSize: "35px", color: "white" }}
+                >
                   Spotify
                 </i>
               </li>
@@ -39,7 +42,7 @@ const NavBar = () => {
             sm={12}
             md={12}
             lg={12}
-            className={`fixed-bottom ml-3 p-0 ${Styles.nav} mb-5 `}
+            className={`fixed-bottom ml-2 p-0 ${Styles.nav} mb-5 `}
           >
             <ul className="nav flex-column justify-content-center align-items-center w-100 ">
               <li className="nav-item w-100 mb-3">
