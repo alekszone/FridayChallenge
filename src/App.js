@@ -7,14 +7,14 @@ import Trending from "./component/Trending";
 import Styles from "./component/style.module.css";
 import Footer from "./component/Footer";
 import SearchSong from "./component/SearchSong";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
+import Login from "./component/Login";
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          {" "}
+      <>
+        {this.props.location.pathname !== "/login" && (
           <Router>
             <Row className=" m-0 p-0">
               <Col xs={12} sm={12} md={2} lg={2}>
@@ -27,9 +27,12 @@ class App extends React.Component {
             </Row>
             <Footer />
           </Router>
-        </header>
-      </div>
+        )}
+        <Router>
+          <Route path="/login" exact component={Login} />
+        </Router>
+      </>
     );
   }
 }
-export default App;
+export default withRouter(App);
