@@ -46,7 +46,16 @@ class Trending extends Component {
         },
       })
         .then((response) => response.json())
-        .then((data) => this.state.albums.push(data.data[1]))
+        .then(
+          (data) => this.state.albums.push(data.data[3]),
+
+          console.log(
+            this.state.albums &&
+              this.state.albums.album &&
+              this.state.albums.album.cover_big,
+            "ca ka mrena"
+          )
+        )
         .catch((err) => {
           console.error(err);
         });
@@ -61,7 +70,7 @@ class Trending extends Component {
         },
       })
         .then((response) => response.json())
-        .then((data) => this.state.albums2.push(data.data[1]))
+        .then((data) => this.state.albums2.push(data.data[3]))
         .catch((err) => {
           console.error(err);
         });
@@ -76,7 +85,7 @@ class Trending extends Component {
         },
       })
         .then((response) => response.json())
-        .then((data) => this.state.albums3.push(data.data[1]))
+        .then((data) => this.state.albums3.push(data.data[3]))
         .catch((err) => {
           console.error(err);
         });
