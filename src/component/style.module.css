@@ -9,7 +9,14 @@
     #0a1020 75%
   ) !important;
   outline: 2px solid red !important;
-  height: 100vh;
+  height: 95vh;
   overflow-y: auto;
+  overflow-x: hidden;
+
   width: 100%;
+}
+
+.cards {
+  background-color: transparent !important;
+  color: white;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Card } from "react-bootstrap";
-
+import Style from "./style.module.css";
 export default class ArtistAlbum extends Component {
   componentDidMount() {
     this.props.artists.map((artist) => {
@@ -10,14 +10,14 @@ export default class ArtistAlbum extends Component {
   render() {
     return (
       <>
-        <div className="artistsAlbums">
+        <div>
           <h3>{this.props.title}</h3>
           <Row className="row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 ">
             {this.props.artists &&
               this.props.artists.map((artist, key) => (
                 <>
                   <Col key={key} className=" d-flex justify-content-center">
-                    <Card style={{ width: "11rem" }}>
+                    <Card style={{ width: "11rem" }} className={Style.cards}>
                       <Card.Img
                         //   onClick={() =>
                         //     props.history.push("/album/" + artist.album.id)
