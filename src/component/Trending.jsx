@@ -34,8 +34,7 @@ class Trending extends Component {
       "katy perry",
     ],
   };
-
-  componentDidMount() {
+  fetchAll = () => {
     this.state.usaArtists.forEach((artist) => {
       fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
         method: "GET",
@@ -90,6 +89,9 @@ class Trending extends Component {
           console.error(err);
         });
     });
+  };
+  componentDidMount() {
+    this.fetchAll();
   }
 
   render() {

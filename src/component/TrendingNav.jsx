@@ -19,29 +19,21 @@ const NavBar = () => {
         <div className="collapse navbar-collapse " id="navbarSupportedContent">
           <ul className="navbar-nav m-auto ">
             <li className="nav-item active mr-3">
-              <a className="nav-link bolder" href="#">
+              <a className="nav-link bolder">
                 Trending <span className="sr-only">(current)</span>
               </a>
             </li>
             <li className="nav-item mr-3">
-              <a className="nav-link bolder" href="#">
-                Podcast
-              </a>
+              <a className="nav-link bolder">Podcast</a>
             </li>
             <li className="nav-item mr-3">
-              <a className="nav-link bolder mt-2" href="#">
-                Moods and genres
-              </a>
+              <a className="nav-link bolder mt-2">Moods and genres</a>
             </li>
             <li className="nav-item mr-3">
-              <a className="nav-link bolder mt-2" href="#">
-                New Releases
-              </a>
+              <a className="nav-link bolder mt-2">New Releases</a>
             </li>
             <li className="nav-item mr-3">
-              <a className="nav-link bolder" href="#">
-                Discover
-              </a>
+              <a className="nav-link bolder">Discover</a>
             </li>
           </ul>
         </div>
