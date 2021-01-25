@@ -4,14 +4,18 @@ import Style from "./style.module.css";
 export default function ArtistAlbum(props) {
   const [artist, setArtist] = useState(props.artists);
   useEffect(() => {}, [props.artists]);
-  console.log(props.artists, "uigikhlhijhkhlkn");
+  console.log("uigikhlhijhkhlkn");
   return (
     <div>
       <h3>{props.title}</h3>
       <Row className="row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 ">
-        {artist &&
+        {console.log(
+          "hellooo",
+          props.artists.map((x) => <> {console.log("why", x.album)}</>)
+        )}
+        {/* {artist &&
           artist.map((art, key) => (
-            <>{console.log("hellooo", art)}</>
+            <></>
             // <>
             //   {console.log(artist, "ka arrdh console log ktu")}
             //   <Col key={key} className=" d-flex justify-content-center">
@@ -37,7 +41,7 @@ export default function ArtistAlbum(props) {
             //   </Col>
             //   ;
             // </>
-          ))}
+          ))} */}
       </Row>
     </div>
   );
