@@ -44,7 +44,7 @@ class Trending extends Component {
       "katy perry",
     ],
   };
-  fetchAll = () => {
+  fetchAll = async () => {
     // this.state.usaArtists.forEach((artist) => {
     //   fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
     //     method: "GET",
@@ -76,23 +76,31 @@ class Trending extends Component {
     //     });
     // });
     this.state.popArtist.forEach((artist) => {
-      fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
-        method: "GET",
-        headers: {
-          "x-rapidapi-key":
-            "a38b207ac3msh1ad9621daeb255ap171938jsnd40f00760e58",
-          "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-        },
-      })
-        .then((response) => response.json())
-        .then(
-          (data) => this.state.albums3.push(data.data[3]),
+      const popularSongs = async () => {
+        const data = await fetch(
+          `https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`,
+          {
+            method: "GET",
+            headers: {
+              "x-rapidapi-key":
+                "a38b207ac3msh1ad9621daeb255ap171938jsnd40f00760e58",
+              "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+            },
+          }
+        );
+        // .then((response) => response.json())
+        // .then(
+        //   (data) => this.state.albums3.push(data.data[3]),
 
-          console.log(this.state.albums3, "album 3")
-        )
-        .catch((err) => {
-          console.error(err);
-        });
+        //   console.log(this.state.albums3, "album 3")
+        // )
+        // .catch((err) => {
+        //   console.error(err);
+        // });
+        const allSongs = await data.json();
+        this.state.albums3.push(allSongs.data[3]);
+      };
+      return popularSongs;
     });
   };
   componentDidMount() {
