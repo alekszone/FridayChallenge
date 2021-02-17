@@ -33,7 +33,7 @@ class Trending extends Component {
       "bruno mars",
       "drake",
       "jay z",
-      "nicki minaj",
+      // "nicki minaj",
     ],
     popArtist: [
       "madonna",
@@ -41,62 +41,79 @@ class Trending extends Component {
       "justin bieber",
       "drake",
       "lady gaga",
-      "katy perry",
+      // "katy perry",
     ],
   };
-  fetchAll = () => {
-    // this.state.usaArtists.forEach((artist) => {
-    //   fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
-    //     method: "GET",
-    //     headers: {
-    //       "x-rapidapi-key":
-    //         "a38b207ac3msh1ad9621daeb255ap171938jsnd40f00760e58",
-    //       "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-    //     },
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => this.state.albums.push(data.data[3]))
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    // });
-    // this.state.ukArtist.forEach((artist) => {
-    //   fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
-    //     method: "GET",
-    //     headers: {
-    //       "x-rapidapi-key":
-    //         "a38b207ac3msh1ad9621daeb255ap171938jsnd40f00760e58",
-    //       "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-    //     },
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => this.state.albums2.push(data.data[3]))
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    // });
-    this.state.popArtist.forEach((artist) => {
-      fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
-        method: "GET",
-        headers: {
-          "x-rapidapi-key":
-            "a38b207ac3msh1ad9621daeb255ap171938jsnd40f00760e58",
-          "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          this.setState({ albums3: data.data });
 
-          console.log(this.state.albums3, "album 3");
+  fetchAll = () => {
+    const song1 = [];
+    const song2 = [];
+    const song3 = [];
+    const fetch1 = [];
+    const fetch2 = [];
+    const fetch3 = [];
+
+    this.state.usaArtists.forEach((artist) => {
+      fetch1.push(
+        fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "a38b207ac3msh1ad9621daeb255ap171938jsnd40f00760e58",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          },
         })
-        .catch((err) => {
-          console.error(err);
-        });
+          .then((response) => response.json())
+          .then((data) => song1.push(data.data[3]))
+          .catch((err) => {
+            console.error(err);
+          })
+      );
+    });
+    this.state.ukArtist.forEach((artist) => {
+      fetch2.push(
+        fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "a38b207ac3msh1ad9621daeb255ap171938jsnd40f00760e58",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => song2.push(data.data[3]))
+          .catch((err) => {
+            console.error(err);
+          })
+      );
+    });
+    this.state.popArtist.forEach((artist) => {
+      fetch3.push(
+        fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "a38b207ac3msh1ad9621daeb255ap171938jsnd40f00760e58",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            song3.push(data.data[3]);
+
+            console.log(this.state.albums3, "album 3");
+          })
+          .catch((err) => {
+            console.error(err);
+          })
+      );
       // const allSongs = await data.json();
       // this.state.albums3.push(allSongs.data[3]);
 
       // return popularSongs;
+    });
+    Promise.all([...fetch1, ...fetch2, ...fetch3]).then(() => {
+      this.setState({ albums: song1, albums2: song2, albums3: song3 });
     });
   };
   componentDidMount = async () => {
@@ -133,7 +150,10 @@ class Trending extends Component {
         <TrendingNav />
         {/* <ArtistAlbum artists={this.state.albums} title="UK Artist" />
         <ArtistAlbum artists={this.state.albums2} title="USA Artists" /> */}
+        <ArtistAlbum artists={this.state.albums} title="UK Artists" />
+        <ArtistAlbum artists={this.state.albums2} title="USA Artists" />
         <ArtistAlbum artists={this.state.albums3} title="POP Artists" />
+
         {/* <div>
           <h3>Helllo</h3>
           <Row className="row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 ">
