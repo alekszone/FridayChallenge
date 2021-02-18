@@ -3,6 +3,7 @@ import NavBar from "./component/NavBar";
 import "./App.css";
 import { Row, Col } from "react-bootstrap";
 import Home from "./component/Home";
+import AlbumsSongs from "./component/AlbumSongs";
 import Trending from "./component/Trending";
 import Styles from "./component/style.module.css";
 import Footer from "./component/Footer";
@@ -26,6 +27,7 @@ class App extends React.Component {
                 <Col xs={12} sm={12} md={10} lg={10} className=" p-0">
                   <Route path="/" exact component={Home} />
                   <Route path="/search" exact component={SearchSong} />
+                  <Route path="/albums/:name/" component={AlbumsSongs} />
                 </Col>{" "}
               </Row>
               <Footer />

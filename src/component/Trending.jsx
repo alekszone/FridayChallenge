@@ -33,7 +33,7 @@ class Trending extends Component {
       "bruno mars",
       "drake",
       "jay z",
-      // "nicki minaj",
+      "nicki minaj",
     ],
     popArtist: [
       "madonna",
@@ -41,7 +41,7 @@ class Trending extends Component {
       "justin bieber",
       "drake",
       "lady gaga",
-      // "katy perry",
+      "katy perry",
     ],
   };
 
@@ -107,10 +107,6 @@ class Trending extends Component {
             console.error(err);
           })
       );
-      // const allSongs = await data.json();
-      // this.state.albums3.push(allSongs.data[3]);
-
-      // return popularSongs;
     });
     Promise.all([...fetch1, ...fetch2, ...fetch3]).then(() => {
       this.setState({ albums: song1, albums2: song2, albums3: song3 });
@@ -119,30 +115,7 @@ class Trending extends Component {
   componentDidMount = async () => {
     this.fetchAll();
   };
-  // componentDidUpdate = async (prevState) => {
-  //   // Typical usage (don't forget to compare props):
-  //   if (prevState.albums3 !== this.state.albums3) {
-  //     this.state.popArtist.forEach((artist) => {
-  //       fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
-  //         method: "GET",
-  //         headers: {
-  //           "x-rapidapi-key":
-  //             "a38b207ac3msh1ad9621daeb255ap171938jsnd40f00760e58",
-  //           "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-  //         },
-  //       })
-  //         .then((response) => response.json())
-  //         .then((data) => {
-  //           this.setState({ albums3: data.data[3] });
 
-  //           console.log(this.state.albums3, "album 3");
-  //         })
-  //         .catch((err) => {
-  //           console.error(err);
-  //         });
-  //     });
-  //   }
-  // };
   render() {
     console.log(this.props.song1, "props   is here");
     return (
@@ -153,41 +126,6 @@ class Trending extends Component {
         <ArtistAlbum artists={this.state.albums} title="UK Artists" />
         <ArtistAlbum artists={this.state.albums2} title="USA Artists" />
         <ArtistAlbum artists={this.state.albums3} title="POP Artists" />
-
-        {/* <div>
-          <h3>Helllo</h3>
-          <Row className="row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 ">
-            {this.state.albums3 &&
-              this.state.albums3.length > 0 &&
-              this.state.albums3.map((artist, key) => (
-                <>
-                  {console.log(artist.album, "hellooo")}
-                  <Col key={key} className=" d-flex justify-content-center">
-                    <Card style={{ width: "11rem" }} className={Style.cards}>
-                      <Card.Img
-                        //   onClick={() =>
-                        //     props.history.push("/album/" + artist.album.id)
-                        //   }
-                        variant="top"
-                        src={artist.album.cover_big}
-                      />
-                      <Card.Body>
-                        <Card.Text>{artist.album.title}</Card.Text>
-                        <span
-                        // onClick={() =>
-                        //   props.history.push("/artist/" + artist.artist.id)
-                        // }
-                        >
-                          {artist.artist.name}
-                        </span>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  ;
-                </>
-              ))}
-          </Row>
-        </div> */}
       </Col>
     );
   }

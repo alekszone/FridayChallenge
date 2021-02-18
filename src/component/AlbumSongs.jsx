@@ -1,13 +1,9 @@
-import React from 'react'
+import React from "react";
 
-class AlbumSongs extends React.Component{
-render(){
-return{
-
-
-
-
+class AlbumSongs extends React.Component {
+  render() {
+    return {};
+  }
 }
-}
-} 
 
+export default AlbumSongs;
