@@ -27,7 +27,7 @@ class App extends React.Component {
                 <Col xs={12} sm={12} md={10} lg={10} className=" p-0">
                   <Route path="/" exact component={Home} />
                   <Route path="/search" exact component={SearchSong} />
-                  <Route path="/albums/:name/" component={AlbumsSongs} />
+                  <Route path="/albums/:id/" exact component={AlbumsSongs} />
                 </Col>{" "}
               </Row>
               <Footer />
