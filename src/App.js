@@ -10,6 +10,7 @@ import Footer from "./component/Footer";
 import SearchSong from "./component/SearchSong";
 import Login from "./component/Login";
 import Singup from "./component/Singup";
+import Songs from "./component/Songs";
 
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 
@@ -27,7 +28,8 @@ class App extends React.Component {
                 <Col xs={12} sm={12} md={10} lg={10} className=" p-0">
                   <Route path="/" exact component={Home} />
                   <Route path="/search" exact component={SearchSong} />
-                  <Route path="/albums/:id/" exact component={AlbumsSongs} />
+                  <Route path="/albums/:name" component={AlbumsSongs} />
+                  <Route path="/songs/:album" component={Songs} />
                 </Col>{" "}
               </Row>
               <Footer />
