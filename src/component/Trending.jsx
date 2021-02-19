@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Row, Card } from "react-bootstrap";
-import Style from "./style.module.css";
+
 import TrendingNav from "./TrendingNav";
 import ArtistAlbum from "./ArtistAlbum";
 import Styles from "./style.module.css";
