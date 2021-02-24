@@ -121,8 +121,7 @@ class Trending extends Component {
     return (
       <Col xs={12} sm={12} md={12} lg={12} className={`${Styles.home}`}>
         <TrendingNav />
-        {/* <ArtistAlbum artists={this.state.albums} title="UK Artist" />
-        <ArtistAlbum artists={this.state.albums2} title="USA Artists" /> */}
+
         <ArtistAlbum artists={this.state.albums} title="UK Artists" />
         <ArtistAlbum artists={this.state.albums2} title="USA Artists" />
         <ArtistAlbum artists={this.state.albums3} title="POP Artists" />

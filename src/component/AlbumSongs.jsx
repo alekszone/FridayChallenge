@@ -37,24 +37,11 @@ class AlbumSongs extends React.Component {
         <Col xs={12} sm={12} md={12} lg={12} className={`${Styles.home}`}>
           <Row className="d-flex justify-content-center mt-2">
             <Card style={{ width: "11rem" }} className={Styles.cards}>
-              <Card.Img
-                // onClick={() =>
-                //  this.props.history.push("/albums/" + artist.artist.name)
-                // }
-                variant="top"
-                src={this.state.artist.picture}
-              />
+              <Card.Img variant="top" src={this.state.artist.picture} />
               <Card.Body>
                 <Card.Text className={`${Styles.text}`}>
                   {this.state.artist.name}
                 </Card.Text>
-                {/* <span */}
-                {/* //   onClick={() => */}
-                {/* //     this.props.history.push("/albums/" + artist.artist.name)
-                //   }
-                // >
-                //   {this.state.artist}
-                // </span> */}
               </Card.Body>
             </Card>
             ;
