@@ -4,9 +4,7 @@ import reducer from "../reducer";
 const composeEnhancres = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialStore = {
-  song1: [],
-  song2: [],
-  song3: [],
+  allSongs: [],
 };
 
 export default function configureStore() {
