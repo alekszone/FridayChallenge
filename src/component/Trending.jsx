@@ -8,11 +8,7 @@ import { connect } from "react-redux";
 
 const mapStateToProps = (state) => state;
 
-const mapDispatchToProps = (dispatch, props) => ({
-  songs1: (album) => dispatch({ type: "album1", payload: album }),
-  songs2: (album) => dispatch({ type: "album2", payload: album }),
-  songs3: (album) => dispatch({ type: "album3", payload: album }),
-});
+const mapDispatchToProps = (dispatch, props) => ({});
 
 class Trending extends Component {
   state = {
