@@ -5,6 +5,7 @@ const composeEnhancres = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialStore = {
   allSongs: [],
+  playSong: [],
 };
 
 export default function configureStore() {
