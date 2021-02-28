@@ -28,3 +28,29 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+.play {
+  width: 130px;
+  align-self: center;
+  margin-top: 30px;
+  background-color: #0de431;
+  border-color: #0de431;
+  color: white;
+  font-size: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.play:hover {
+  background-color: #05d828;
+  border-color: #04ce26;
+}
+
+.play:focus {
+  background-color: #05d828;
+  border-color: #04ce26;
+  outline: none;
+}
