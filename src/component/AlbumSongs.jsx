@@ -2,6 +2,17 @@ import React from "react";
 import { Col, Row, Card } from "react-bootstrap";
 import Styles from "./style.module.css";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => state;
+
+const mapDispatchToProps = (dispatch, props) => ({
+  allSong: (allsongs) =>
+    dispatch({
+      type: "allSongs",
+      payload: allsongs,
+    }),
+});
 class AlbumSongs extends React.Component {
   state = {
     albums: [],
@@ -66,20 +77,24 @@ class AlbumSongs extends React.Component {
                   <Col lg={2} md={3} sm={6} xs={6} className="mb-2">
                     <Card style={{ width: "11rem" }} className={Styles.cards}>
                       <Card.Img
-                        onClick={() =>
-                          this.props.history.push("/songs/" + album.artist.name)
-                        }
+                        onClick={() => {
+                          this.props.history.push(
+                            "/songs/" + album.artist.name
+                          );
+                          this.props.allSong(this.state.albums);
+                        }}
                         variant="top"
                         src={album.album.cover_big}
                       />
                       <Card.Body>
                         <Card.Text
                           className={`${Styles.text}`}
-                          onClick={() =>
+                          onClick={() => {
                             this.props.history.push(
                               "/songs/" + album.artist.name
-                            )
-                          }
+                            );
+                            this.props.allSong(this.state.albums);
+                          }}
                         >
                           {album.album.title}
                         </Card.Text>
@@ -105,4 +120,7 @@ class AlbumSongs extends React.Component {
   }
 }
 
-export default withRouter(AlbumSongs);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(AlbumSongs));
