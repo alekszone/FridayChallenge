@@ -21,7 +21,7 @@ class AlbumSongs extends React.Component {
   componentDidMount = async () => {
     const artist = this.props.match.params.name;
 
-    await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
+    await fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/` + artist, {
       method: "GET",
       headers: {
         "x-rapidapi-key": "a38b207ac3msh1ad9621daeb255ap171938jsnd40f00760e58",
@@ -30,10 +30,11 @@ class AlbumSongs extends React.Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        this.setState({
-          albums: data.data,
-          artist: data.data[0].artist,
-        });
+        console.log(data, "ca ka data");
+        // this.setState({
+        //   albums: data.data,
+        //   artist: data.data[0].artist,
+        // });
 
         console.log(data.data);
       })
