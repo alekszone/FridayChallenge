@@ -5,7 +5,13 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => state;
-
+const mapDispatchToProps = (dispatch, props) => ({
+  allSong: (allsongs) =>
+    dispatch({
+      type: "allSongs",
+      payload: allsongs,
+    }),
+});
 class Songs extends Component {
   state = {
     songs: [],
@@ -106,4 +112,4 @@ class Songs extends Component {
     );
   }
 }
-export default connect(mapStateToProps)(withRouter(Songs));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Songs));
