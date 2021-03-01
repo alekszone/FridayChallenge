@@ -17,7 +17,7 @@ function ArtistAlbum(props) {
                 <Card style={{ width: "11rem" }} className={Style.cards}>
                   <Card.Img
                     onClick={() =>
-                      props.history.push("/albums/" + artist.artist.name)
+                      props.history.push("/albums/" + artist.album.id)
                     }
                     variant="top"
                     src={artist.album.cover_big}
@@ -28,7 +28,7 @@ function ArtistAlbum(props) {
                     </Card.Text>
                     <span
                       onClick={() =>
-                        props.history.push("/albums/" + artist.artist.name)
+                        props.history.push("/albums/" + artist.album.id)
                       }
                     >
                       {artist.artist.name}
