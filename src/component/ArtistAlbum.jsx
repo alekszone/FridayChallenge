@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import Style from "./style.module.css";
 function ArtistAlbum(props) {
   useEffect(() => {}, [props.artists]);
-
+  console.log(props);
   return (
     <>
       <h3 style={{ color: "white" }}>{props.title}</h3>
@@ -17,7 +17,7 @@ function ArtistAlbum(props) {
                 <Card style={{ width: "11rem" }} className={Style.cards}>
                   <Card.Img
                     onClick={() =>
-                      props.history.push("/albums/" + artist.album.id)
+                      props.history.push("/albums/" + artist.artist.name)
                     }
                     variant="top"
                     src={artist.album.cover_big}
@@ -28,7 +28,7 @@ function ArtistAlbum(props) {
                     </Card.Text>
                     <span
                       onClick={() =>
-                        props.history.push("/albums/" + artist.album.id)
+                        props.history.push("/albums/" + artist.artist.name)
                       }
                     >
                       {artist.artist.name}
