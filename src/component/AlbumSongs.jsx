@@ -80,9 +80,7 @@ class AlbumSongs extends React.Component {
                     <Card style={{ width: "11rem" }} className={Styles.cards}>
                       <Card.Img
                         onClick={() => {
-                          this.props.history.push(
-                            "/songs/" + album.artist.name
-                          );
+                          this.props.history.push("/songs/" + album.album.id);
                           this.props.allSong(this.state.albums);
                         }}
                         variant="top"
@@ -92,9 +90,7 @@ class AlbumSongs extends React.Component {
                         <Card.Text
                           className={`${Styles.text}`}
                           onClick={() => {
-                            this.props.history.push(
-                              "/songs/" + album.artist.name
-                            );
+                            this.props.history.push("/songs/" + album.album.id);
                             this.props.allSong(this.state.albums);
                           }}
                         >
