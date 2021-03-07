@@ -14,85 +14,82 @@ const mapDispatchToProps = (dispatch, props) => ({
 });
 class Songs extends Component {
   state = {
-    songs: [],
+    songs: {},
   };
-  allFetches = () => {
-    if (this.props.allSongs.length > 0) {
-      this.setState({ songs: this.props.allSongs });
-    } else {
-      const artist = this.props.match.params.name;
-      console.log(artist, "ca ka artist");
-      fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`, {
+  allFetches = async () => {
+    const artist = this.props.match.params.name;
+    console.log(artist, "ca ka artist");
+    const response = await fetch(
+      `https://deezerdevs-deezer.p.rapidapi.com/album/${artist}`,
+      {
         method: "GET",
         headers: {
           "x-rapidapi-key":
             "a38b207ac3msh1ad9621daeb255ap171938jsnd40f00760e58",
           "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
         },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          this.setState({
-            songs: data.data,
-          });
-
-          console.log(data.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
+      }
+    );
+    const data = await response.json();
+    this.setState({
+      songs: data,
+    });
   };
-  componentDidMount = () => {
-    this.allFetches();
+  componentDidMount = async () => {
+    await this.allFetches();
     const artist = this.props.match.params.name;
     console.log(artist, "ca ka artist");
   };
-
+  // componentDidUpdate(prevState) {
+  //   // Typical usage (don't forget to compare props):
+  //   if (this.state.songs !== prevState.songs) {
+  //     this.allFetches();
+  //   }
+  // }
   render() {
     {
-      console.log(this.state.songs);
+      console.log(
+        this.state.songs.artist && this.state.songs.artist.name,
+        "ca ka songs"
+      );
     }
     return (
       <Col xs={12} sm={12} md={12} lg={12} className={`${Styles.home}`}>
         <Row>
           <Col xs={12} sm={12} md={6} lg={6}>
             <Col lg={2} md={3} sm={6} xs={6} className="mb-2">
-              <Card style={{ width: "11rem" }} className={Styles.cards}>
-                <Card.Img
-                  //   onClick={() => {
-                  //     this.props.history.push("/songs/" + album.artist.name);
-                  //     this.props.allSong(this.state.albums);
-                  //   }}
-                  variant="top"
-                  src={
-                    this.state.songs.length > 0 &&
-                    this.state.songs[0] &&
-                    this.state.songs[0].artist.picture
-                  }
-                />
-                <Card.Body>
-                  <Card.Text
-                    className={`${Styles.text}`}
-                    // onClick={() => {
-                    //   this.props.history.push("/songs/" + album.artist.name);
-                    //   this.props.allSong(this.state.albums);
-                    // }}
+              {this.state.songs.length > 0 &&
+                this.state.songs.artist.length > 0 &&
+                this.state.songs.artist.map((song) => (
+                  <Card style={{ width: "11rem" }} className={Styles.cards}>
+                    <Card.Img
+                      //   onClick={() => {
+                      //     this.props.history.push("/songs/" + album.artist.name);
+                      //     this.props.allSong(this.state.albums);
+                      //   }}
+                      variant="top"
+                      src={song.artist.picture}
+                    />
+                    <Card.Body>
+                      <Card.Text
+                        className={`${Styles.text}`}
+                        // onClick={() => {
+                        //   this.props.history.push("/songs/" + album.artist.name);
+                        //   this.props.allSong(this.state.albums);
+                        // }}
+                      >
+                        {song.artist.name}
+                      </Card.Text>
+                      {/* <span
+                    onClick={() =>
+                      props.history.push("/albums/" + artist.artist.name)
+                    }
                   >
-                    {this.state.songs.length > 0 &&
-                      this.state.songs[0] &&
-                      this.state.songs[0].artist.name}
-                  </Card.Text>
-                  {/* <span
-                      onClick={() =>
-                        props.history.push("/albums/" + artist.artist.name)
-                      }
-                    >
-                      {artist.artist.name}
-                    </span> */}
-                </Card.Body>
-              </Card>
-              ;
+                    {artist.artist.name}
+                  </span> */}
+                    </Card.Body>
+                  </Card>
+                ))}
             </Col>
             <Button variant="success" style={{ color: "white" }}>
               PLAY
