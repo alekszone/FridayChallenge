@@ -6,6 +6,12 @@ export default function (state = {}, action) {
         allSongs: action.payload,
       };
 
+    case "playSong":
+      return {
+        ...state,
+        playSong: action.payload,
+      };
+
     default:
       return state;
   }

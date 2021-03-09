@@ -48,9 +48,26 @@
   background-color: #05d828;
   border-color: #04ce26;
 }
+.songs {
+  height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* width: 100%; */
+}
 
 .play:focus {
   background-color: #05d828;
   border-color: #04ce26;
+  outline: none;
+}
+
+.p:hover {
+  background-color: rgb(122, 122, 121) !important;
+  border-radius: 5px;
+}
+.p:focus {
+  background-color: rgb(122, 122, 121) !important;
+  border-radius: 5px;
   outline: none;
 }
