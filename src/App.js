@@ -1,16 +1,16 @@
 import React from "react";
-import NavBar from "./component/NavBar";
+import NavBar from "./component/HomePage/NavBar";
 import "./App.css";
 import { Row, Col } from "react-bootstrap";
-import Home from "./component/Home";
-import AlbumsSongs from "./component/AlbumSongs";
-import Trending from "./component/Trending";
+import Home from "./component/HomePage/Home";
+import AlbumsSongs from "./component/HomePage/AlbumSongs";
+import Trending from "./component/HomePage/Trending";
 import Styles from "./component/style.module.css";
-import Footer from "./component/Footer";
-import SearchSong from "./component/SearchSong";
-import Login from "./component/Login";
-import Singup from "./component/Singup";
-import Songs from "./component/Songs";
+import Footer from "./component/Footer/Footer";
+import SearchSong from "./component/HomePage/SearchSong";
+import Login from "./component/Authorization/Login";
+import Singup from "./component/Authorization/Singup";
+import Songs from "./component/HomePage/Songs";
 
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 
