@@ -30,7 +30,11 @@ class SingelSong extends Component {
             return (
               <div
                 tabindex="1"
-                className={`${Styles.p} `}
+                className={
+                  this.props.playSong && this.props.playSong.id === song.id
+                    ? `${Styles.playing} ${Styles.play1}`
+                    : `${Styles.play1}`
+                }
                 onClick={() => this.playSong(song)}
               >
                 <div
