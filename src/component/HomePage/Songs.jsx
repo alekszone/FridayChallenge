@@ -37,7 +37,7 @@ class Songs extends Component {
       songs: data,
       artist: data.artist,
     });
-    this.props.allSong(data.artist);
+    this.props.allSong(data.tracks);
   };
   componentDidMount = async () => {
     this.allFetches();
