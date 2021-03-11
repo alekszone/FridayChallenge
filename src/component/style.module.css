@@ -71,6 +71,7 @@
   border-radius: 5px;
   outline: none;
 }
+
 input[type="range"] {
   -webkit-appearance: none;
   /* background-color: transparent; */
@@ -102,7 +103,16 @@ input[type="range"]:focus {
 input[type="range"]:focus::-webkit-slider-runnable-track {
   background: #ccc;
 }
-/* #volBar {
-  width: 30%;
-  margin-left: 10px;
-} */
+
+.playing {
+  background-color: rgb(131, 131, 131) !important;
+  border-radius: 5px !important;
+  outline: none !important;
+}
+.play1:hover {
+  background-color: rgb(105, 105, 105) !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  color: white !important;
+  outline: none;
+}
