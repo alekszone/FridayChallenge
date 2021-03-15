@@ -11,6 +11,11 @@ export default function (state = {}, action) {
         ...state,
         playSong: action.payload,
       };
+    case "image":
+      return {
+        ...state,
+        image: action.payload,
+      };
 
     default:
       return state;
