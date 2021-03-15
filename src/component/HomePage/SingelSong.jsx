@@ -8,6 +8,11 @@ const mapDispatchToProps = (dispatch, props) => ({
       type: "playSong",
       payload: playSong,
     }),
+  image: (image) =>
+    dispatch({
+      type: "image",
+      payload: image,
+    }),
 });
 
 class SingelSong extends Component {
@@ -18,6 +23,7 @@ class SingelSong extends Component {
   playSong = (e) => {
     const playSong = e;
     this.props.singelSong(playSong);
+    this.props.image(this.props.artist && this.props.artist.picture);
     console.log(e && e, "ca ka songs");
   };
 

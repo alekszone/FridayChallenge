@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Col } from "react-bootstrap";
+import { Col, Card } from "react-bootstrap";
+
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => state;
@@ -13,10 +14,13 @@ const mapDispatchToProps = (dispatch, props) => ({
 class Footer extends Component {
   state = {
     mute: false,
-    currentSongTime: 0,
+    currentSongTime: 0.1,
     duration: 0,
     volumState: 1,
     playButton: false,
+    color: "",
+    shuffleSong: false,
+    randomColor: "",
   };
   volume = React.createRef();
 
@@ -57,7 +61,11 @@ class Footer extends Component {
     this.volume.current.currentTime = count;
   };
   playPrevious = () => {
-    if (this.props.allSongs.data !== 0) {
+    if (
+      this.props.allSongs &&
+      this.props.allSongs.data &&
+      this.props.allSongs.data !== 0
+    ) {
       const findSong = this.props.allSongs.data.findIndex(
         (x) => x.id === this.props.playSong.id
       );
@@ -69,29 +77,135 @@ class Footer extends Component {
         if (selectPreviuSong) {
           this.props.singelSong(selectPreviuSong[0]);
         }
-        console.log(selectPreviuSong, "ca ka mrena");
       } else {
         this.props.singelSong(this.props.allSongs.data[0]);
       }
-      console.log(findSong, "ca ka find");
-      console.log(this.props.allSongs.data[0], "ca ka id");
     }
   };
-  playNext = () => {};
+  playNext = () => {
+    if (
+      this.props.allSongs &&
+      this.props.allSongs.data &&
+      this.props.allSongs.data.length > 0
+    ) {
+      const findSong =
+        this.props.allSongs &&
+        this.props.allSongs.data.findIndex(
+          (x) => x.id === this.props.playSong.id
+        );
 
+      if (findSong !== null || findSong !== undefined) {
+        const selectPreviuSong = this.props.allSongs.data.slice(
+          findSong + 1,
+          findSong + 2
+        );
+        if (selectPreviuSong.length > 0) {
+          this.props.singelSong(selectPreviuSong[0]);
+        } else {
+          this.props.singelSong(
+            this.props.allSongs &&
+              this.props.allSongs.data &&
+              this.props.allSongs.data[0]
+          );
+        }
+      } else {
+        this.props.singelSong(
+          this.props.allSongs &&
+            this.props.allSongs.data &&
+            this.props.allSongs.data[0]
+        );
+      }
+    }
+  };
+  loopSong = () => {
+    if (this.volume.current.loop === false) {
+      this.volume.current.loop = true;
+      this.setState({ color: "blue" });
+      this.setState({ shuffleSong: false });
+      this.setState({ randomColor: "" });
+    } else {
+      this.volume.current.loop = false;
+      this.setState({ color: "" });
+    }
+  };
+  shuffleSongs = () => {
+    if (this.state.currentSongTime === this.state.duration) {
+      const randomSong = Math.floor(
+        Math.random() * this.props.allSongs.data.length
+      );
+      this.props.singelSong(this.props.allSongs.data[randomSong]);
+    }
+  };
+  componentDidUpdate(prevState) {
+    // Typical usage (don't forget to compare props):
+    if (this.state.shuffleSong === true) {
+      this.shuffleSongs();
+    }
+  }
+
+  randomSongs = () => {
+    if (this.state.shuffleSong === false) {
+      this.setState({ randomColor: "blue" });
+      this.setState({ shuffleSong: true });
+      this.volume.current.loop = false;
+      this.setState({ color: "" });
+    } else {
+      this.setState({ shuffleSong: false });
+      this.setState({ randomColor: "" });
+    }
+  };
+  timeUpdate = (e) => {
+    this.setState({ currentSongTime: e.target.currentTime });
+  };
+  canPlay = (e) => {
+    this.setState({ duration: e.target.duration });
+  };
   render() {
-    console.log(
-      this.props.allSongs && this.props.allSongs.data,
-      "ca vlere ka allSongs"
-    );
+    console.log(this.props.playSong, "ca ka mrena");
     return (
       <div className="navbar fixed-bottom navbar-expand-sm w-100 d-flex justify-content-center ">
         <div className="row row-cols-1 row-cols-md-1 row-cols-lg-3 w-100 py-1">
-          <Col></Col>
+          <Col>
+            <div className="d-flex justify-content-around">
+              {this.props.playSong && this.props.image ? (
+                <>
+                  <Card
+                    style={{
+                      width: "60px",
+                      height: "20px",
+                      backgroundColor: "transparent",
+                      border: "none",
+                    }}
+                  >
+                    <Card.Img variant="top" src={this.props.image} />
+                  </Card>
+
+                  <div style={{ height: "30px" }}>
+                    <p className="mr-2" style={{ color: "white" }}>
+                      {this.props.playSong &&
+                        this.props.playSong.title &&
+                        this.props.playSong.title.charAt(0).toUpperCase() +
+                          this.props.playSong.title.slice(1)}
+                    </p>
+                    <p style={{ color: "grey", fontSize: "12px" }}>
+                      {this.props.playSong &&
+                        this.props.playSong.artist &&
+                        this.props.playSong.artist.name}
+                    </p>
+                  </div>
+                </>
+              ) : (
+                <h5 style={{ color: "white" }}>Select a song</h5>
+              )}
+            </div>
+          </Col>
           <Col className=" d-flex flex-column justify-content-center align-items-center">
             <div className="d-flex  justify-content-center align-items-center mb-1">
-              <a className="mr-4">
-                <i className="fa fa-random"></i>
+              <a className="mr-4" onClick={() => this.randomSongs()}>
+                <i
+                  className="fa fa-random"
+                  style={{ color: this.state.randomColor }}
+                ></i>
               </a>
               <a className="mr-4" onClick={() => this.playPrevious()}>
                 <i className="fa fa-fast-backward"></i>
@@ -109,11 +223,14 @@ class Footer extends Component {
                   ></i>
                 )}
               </a>
-              <a className="mr-4">
+              <a className="mr-4" onClick={() => this.playNext()}>
                 <i className="fa fa-fast-forward"></i>
               </a>
-              <a className="mr-1">
-                <i className="fa fa-repeat"></i>
+              <a className="mr-1" onClick={(e) => this.loopSong()}>
+                <i
+                  className="fa fa-repeat"
+                  style={{ color: this.state.color }}
+                ></i>
               </a>
             </div>
             <div className="w-100 progressB d-flex align-items-baseline">
@@ -132,8 +249,6 @@ class Footer extends Component {
                     ? (this.state.currentSongTime * 100) / this.state.duration
                     : 0
                 }
-                // aria-valuemin="0"
-                // aria-valuemax="100"
               />
 
               <small className="ml-2" style={{ color: "white" }}>
@@ -141,10 +256,8 @@ class Footer extends Component {
               </small>
             </div>
             <audio
-              onTimeUpdate={(e) =>
-                this.setState({ currentSongTime: e.target.currentTime })
-              }
-              onCanPlay={(e) => this.setState({ duration: e.target.duration })}
+              onTimeUpdate={(e) => this.timeUpdate(e)}
+              onCanPlay={(e) => this.canPlay(e)}
               ref={this.volume}
               type="audio/mpeg"
               preload="true"
