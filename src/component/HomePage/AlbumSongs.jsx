@@ -68,15 +68,16 @@ class AlbumSongs extends React.Component {
               className="d-flex justify-content-center mt-2"
             >
               <div>
-                <p style={{ color: "red", fontSize: "20px" }}>
+                <p style={{ color: "white", fontSize: "20px" }}>
                   Albums of {this.state.artist.name}
                 </p>
               </div>
-            </Col>
+            </Col>{" "}
             {this.state.albums.map((album) => {
               return (
                 <>
-                  <Col lg={2} md={3} sm={6} xs={6} className="mb-2">
+                  {" "}
+                  <Col lg={2} md={12} sm={6} xs={6} className="mb-2 mr-1">
                     <Card style={{ width: "11rem" }} className={Styles.cards}>
                       <Card.Img
                         onClick={() => {
@@ -105,12 +106,11 @@ class AlbumSongs extends React.Component {
                     </span> */}
                       </Card.Body>
                     </Card>
-                    ;
-                  </Col>
-                  ;
+                    ; ;
+                  </Col>{" "}
                 </>
               );
-            })}
+            })}{" "}
           </Row>
         </Col>
       </>
