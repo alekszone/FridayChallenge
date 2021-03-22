@@ -3,7 +3,7 @@ import { Navbar, Col, Row } from "react-bootstrap";
 import Styles from "../style.module.css";
 import { withRouter } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <Navbar expand="md">
       <Navbar.Toggle aria-controls="hello" style={{ marginLeft: "auto" }} />
@@ -20,18 +20,24 @@ const NavBar = () => {
                 </i>
               </li>
               <li className="mt-3  nav-item active">
-                <a href="/">
+                <a
+                  onClick={() => props.history.push("/")}
+                  style={{ cursor: "pointer" }}
+                >
                   <i className="fa fa-home mr-3" />
                   Home
                 </a>
               </li>
               <li className="mt-3  nav-item">
-                <a href="search">
+                <a
+                  onClick={() => props.history.push("/search")}
+                  style={{ cursor: "pointer" }}
+                >
                   <i class="fa fa-search mr-3"></i>Search
                 </a>
               </li>
               <li className="mt-3  nav-item">
-                <a href="playlist.html">
+                <a href="playlist.html" style={{ cursor: "pointer" }}>
                   <i class="fa fa-book  mr-3"></i>Your Library
                 </a>
               </li>
@@ -75,4 +81,4 @@ const NavBar = () => {
     </Navbar>
   );
 };
-export default NavBar;
+export default withRouter(NavBar);
