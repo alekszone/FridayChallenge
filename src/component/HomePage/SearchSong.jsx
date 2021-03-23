@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import Styles from "../style.module.css";
+import { Card, Col, Row } from "react-bootstrap";
 function SearchSong() {
   const [fetchSearch, setFetchSearch] = useState([]);
   const fetchsongs = async (artist) => {
@@ -29,15 +30,42 @@ function SearchSong() {
         type="text"
         onChange={(e) => fetchsongs(e.currentTarget.value)}
       ></input>
-
-      {fetchSearch &&
-        fetchSearch.map((song) => {
-          return (
-            <>
-              <p>{song.title}</p>
-            </>
-          );
-        })}
+      <Row>
+        {fetchSearch &&
+          fetchSearch.map((song) => {
+            return (
+              <>
+                <Col lg={2} md={3} sm={6} xs={6}>
+                  <Card
+                    style={{ width: "11rem" }}
+                    className={`${Styles.cards} mr-2 ml-2`}
+                  >
+                    <Card.Img
+                      // onClick={() =>
+                      //   props.history.push("/albums/" + artist.artist.name)
+                      // }
+                      variant="top"
+                      src={song.album.cover_big}
+                    />
+                    <Card.Body>
+                      <Card.Text className={`${Styles.text}`}>
+                        {song.title}
+                      </Card.Text>
+                      <span
+                      // onClick={() =>
+                      //   props.history.push("/albums/" + artist.artist.name)
+                      // }
+                      >
+                        {song.artist.name}
+                      </span>
+                    </Card.Body>
+                  </Card>
+                  ;
+                </Col>
+              </>
+            );
+          })}
+      </Row>
     </div>
   );
 }
