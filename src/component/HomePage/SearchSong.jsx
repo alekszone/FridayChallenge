@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import Styles from "../style.module.css";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row, Button } from "react-bootstrap";
 function SearchSong() {
   const [fetchSearch, setFetchSearch] = useState([]);
   const fetchsongs = async (artist) => {
@@ -26,10 +26,15 @@ function SearchSong() {
   console.log(fetchSearch, "ca ka mrena");
   return (
     <div className={`${Styles.home}`}>
-      <input
-        type="text"
-        onChange={(e) => fetchsongs(e.currentTarget.value)}
-      ></input>
+      <div className="d-flex justify-content-center mt-5">
+        <input
+          type="text"
+          onChange={(e) => fetchsongs(e.currentTarget.value)}
+        ></input>
+        <Button className="" variant="success" style={{ color: "white" }}>
+          Search
+        </Button>
+      </div>
       <Row>
         {fetchSearch &&
           fetchSearch.map((song) => {
