@@ -40,8 +40,6 @@ class AlbumSongs extends React.Component {
         albums: data.data,
         artist: data.data[0].artist,
       });
-
-    // console.log(data.data);
   };
   render() {
     console.log(this.state.albums, this.state.artist, "datta");

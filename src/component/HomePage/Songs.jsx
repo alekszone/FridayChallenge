@@ -50,12 +50,7 @@ class Songs extends Component {
     const artist = this.props.match.params.name;
     console.log(artist, "ca ka artist");
   };
-  // componentDidUpdate(prevState) {
-  //   // Typical usage (don't forget to compare props):
-  //   if (this.state.songs !== prevState.songs) {
-  //     this.allFetches();
-  //   }
-  // }
+
   render() {
     {
       console.log(this.state.songs && this.state.songs, "ca ka songs");

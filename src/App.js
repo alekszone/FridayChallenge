@@ -4,8 +4,7 @@ import "./App.css";
 import { Row, Col } from "react-bootstrap";
 import Home from "./component/HomePage/Home";
 import AlbumsSongs from "./component/HomePage/AlbumSongs";
-import Trending from "./component/HomePage/Trending";
-import Styles from "./component/style.module.css";
+
 import Footer from "./component/Footer/Footer";
 import SearchSong from "./component/HomePage/SearchSong";
 import Login from "./component/Authorization/Login";
