@@ -16,6 +16,18 @@ export default function (state = {}, action) {
         ...state,
         image: action.payload,
       };
+    case "likeSong":
+      return {
+        ...state,
+        likedSong: action.payload,
+      };
+    case "dislikeSong":
+      return {
+        ...state,
+        likedSong: state.likedSong.filter(
+          (item, index) => index !== action.payload
+        ),
+      };
 
     default:
       return state;
