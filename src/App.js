@@ -4,12 +4,12 @@ import "./App.css";
 import { Row, Col } from "react-bootstrap";
 import Home from "./component/HomePage/Home";
 import AlbumsSongs from "./component/HomePage/AlbumSongs";
-
+import Songs from "./component/HomePage/Songs";
 import Footer from "./component/Footer/Footer";
 import SearchSong from "./component/HomePage/SearchSong";
+import SavedSongs from "./component/HomePage/SavedSongs";
 import Login from "./component/Authorization/Login";
 import Singup from "./component/Authorization/Singup";
-import Songs from "./component/HomePage/Songs";
 
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 
@@ -29,6 +29,7 @@ class App extends React.Component {
                   <Route path="/search" component={SearchSong} />
                   <Route path="/albums/:name" component={AlbumsSongs} />
                   <Route path="/songs/:name" component={Songs} />
+                  <Route path="/liked" component={SavedSongs} />
                 </Col>{" "}
               </Row>
               <Footer />

@@ -37,7 +37,10 @@ const NavBar = (props) => {
                 </a>
               </li>
               <li className="mt-3  nav-item">
-                <a href="playlist.html" style={{ cursor: "pointer" }}>
+                <a
+                  onClick={() => props.history.push("/liked")}
+                  style={{ cursor: "pointer" }}
+                >
                   <i class="fa fa-book  mr-3"></i>Your Library
                 </a>
               </li>

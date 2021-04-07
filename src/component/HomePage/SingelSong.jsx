@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Styles from "../style.module.css";
 import { connect } from "react-redux";
+import { AiOutlineLike, AiTwotoneLike } from "react-icons/ai";
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch, props) => ({
   singelSong: (playSong) =>
@@ -13,9 +14,17 @@ const mapDispatchToProps = (dispatch, props) => ({
       type: "image",
       payload: image,
     }),
+  likeSongs: (likeSong) =>
+    dispatch({
+      type: "likeSong",
+      payload: likeSong,
+    }),
 });
 
 class SingelSong extends Component {
+  state = {
+    likedSong: false,
+  };
   convertTime = (time) => {
     return (time - (time %= 60)) / 60 + (9 < time ? ":" : ":0") + time;
   };
@@ -26,9 +35,9 @@ class SingelSong extends Component {
     this.props.image(this.props.artist && this.props.artist.picture);
     console.log(e && e, "ca ka songs");
   };
-
+  componentDidMount = () => {};
   render() {
-    console.log(this.props.playSong && this.props.playSong, "ca ka songs");
+    console.log(this.props.likedSong && this.props.likedSong, "ca ka songs");
     return (
       <div className={`${Styles.songs} mt-5`}>
         {this.props.songs &&
@@ -41,20 +50,52 @@ class SingelSong extends Component {
                     ? `${Styles.playing} ${Styles.play1}`
                     : `${Styles.play1}`
                 }
-                onClick={() => this.playSong(song)}
               >
                 <div
                   className="d-flex justify-content-between"
                   style={{ width: "95%" }}
                 >
-                  <h5 className="ml-2" style={{ color: "white" }}>
+                  <h5
+                    className="ml-2"
+                    style={{ color: "white" }}
+                    onClick={() => this.playSong(song)}
+                  >
                     {song.title.charAt(0).toUpperCase() + song.title.slice(1)}
                   </h5>
-                  <h5 style={{ color: "white" }}>
-                    {this.convertTime(song.duration)}
-                  </h5>
+                  <div
+                    style={{ outline: "2px red solid" }}
+                    className="d-flex justify-content-between"
+                  >
+                    {this.props.likedSong &&
+                    this.props.likedSong.find((x) => x.id === song.id) ? (
+                      <AiTwotoneLike
+                        style={{
+                          color: "white",
+                          fontSize: "45px",
+                          marginRight: "30px",
+                        }}
+                      />
+                    ) : (
+                      <AiOutlineLike
+                        style={{
+                          color: "white",
+                          fontSize: "45px",
+                          marginRight: "30px",
+                        }}
+                        onClick={this.props.likeSongs(song)}
+                      />
+                    )}
+
+                    <h5 style={{ color: "white", height: "15px" }}>
+                      {this.convertTime(song.duration)}
+                    </h5>
+                  </div>
                 </div>
-                <p className="ml-2" style={{ color: "rgb(214, 212, 209)" }}>
+                <p
+                  className="ml-2"
+                  style={{ color: "rgb(214, 212, 209)" }}
+                  onClick={() => this.playSong(song)}
+                >
                   {song.artist.name.charAt(0).toUpperCase() +
                     song.artist.name.slice(1)}
                 </p>
