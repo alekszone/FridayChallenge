@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Row, Card } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 import TrendingNav from "./TrendingNav";
 import ArtistAlbum from "./ArtistAlbum";

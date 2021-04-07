@@ -52,10 +52,6 @@ class Songs extends Component {
   };
 
   render() {
-    {
-      console.log(this.state.songs && this.state.songs, "ca ka songs");
-      console.log(this.state.artist && this.state.artist.name);
-    }
     return (
       <Col xs={12} sm={12} md={12} lg={12} className={`${Styles.home}`}>
         <Row>
