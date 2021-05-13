@@ -22,7 +22,7 @@ const NavBar = (props) => {
               <li className="mt-3  nav-item active">
                 <a
                   onClick={() => props.history.push("/")}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", color: "white" }}
                 >
                   <i className="fa fa-home mr-3" />
                   Home
@@ -31,7 +31,7 @@ const NavBar = (props) => {
               <li className="mt-3  nav-item">
                 <a
                   onClick={() => props.history.push("/search")}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", color: "white" }}
                 >
                   <i class="fa fa-search mr-3"></i>Search
                 </a>
@@ -39,7 +39,7 @@ const NavBar = (props) => {
               <li className="mt-3  nav-item">
                 <a
                   onClick={() => props.history.push("/liked")}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", color: "white" }}
                 >
                   <i class="fa fa-book  mr-3"></i>Your Library
                 </a>

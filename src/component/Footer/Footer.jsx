@@ -161,7 +161,6 @@ class Footer extends Component {
     this.setState({ duration: e.target.duration });
   };
   render() {
-    console.log(this.props.playSong, "ca ka mrena");
     return (
       <div className="navbar fixed-bottom navbar-expand-sm w-100 d-flex justify-content-center ">
         <div className="row row-cols-1 row-cols-md-1 row-cols-lg-3 w-100 py-1">
