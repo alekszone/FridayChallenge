@@ -19,7 +19,7 @@ export default function (state = {}, action) {
     case "likeSong":
       return {
         ...state,
-        likedSong: action.payload,
+        likedSong: state.likedSong.concat([action.payload]),
       };
     case "dislikeSong":
       return {
