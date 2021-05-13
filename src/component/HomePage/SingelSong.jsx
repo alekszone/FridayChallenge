@@ -35,9 +35,16 @@ class SingelSong extends Component {
     this.props.image(this.props.artist && this.props.artist.picture);
     console.log(e && e, "ca ka songs");
   };
-  componentDidMount = () => {};
+
+  newSong = (song) => {
+    this.props.likeSongs(song);
+  };
   render() {
-    console.log(this.props.likedSong && this.props.likedSong, "ca ka songs");
+    console.log(
+      this.props.likedSong && this.props.likedSong,
+      "kjo vjen nga like button"
+    );
+
     return (
       <div className={`${Styles.songs} mt-5`}>
         {this.props.songs &&
@@ -63,10 +70,11 @@ class SingelSong extends Component {
                     {song.title.charAt(0).toUpperCase() + song.title.slice(1)}
                   </h5>
                   <div
-                    style={{ outline: "2px red solid" }}
+                    // style={{ outline: "2px red solid" }}
                     className="d-flex justify-content-between"
                   >
                     {this.props.likedSong &&
+                    this.props.likedSong.length > 0 &&
                     this.props.likedSong.find((x) => x.id === song.id) ? (
                       <AiTwotoneLike
                         style={{
@@ -82,7 +90,7 @@ class SingelSong extends Component {
                           fontSize: "45px",
                           marginRight: "30px",
                         }}
-                        onClick={this.props.likeSongs(song)}
+                        onClick={() => this.newSong(song)}
                       />
                     )}
 
