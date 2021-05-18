@@ -8,6 +8,7 @@ const initialStore = {
   playSong: [],
   image: "",
   likedSong: [],
+  playlist: [],
 };
 
 export default function configureStore() {

@@ -29,6 +29,31 @@ export default function (state = {}, action) {
         ),
       };
 
+    case "createPlaylist":
+      return {
+        ...state,
+        playlist:
+          state.playlist &&
+          state.playlist.concat({ name: action.payload, songs: [] }),
+      };
+      console.log(state.playlist, "si vjen e dhena ktu");
+    case "addSongToPlatList":
+      console.log("ca ka mrena kjo ", action.payload);
+      const info =
+        state.playlist &&
+        state.playlist.findIndex((data) => data.name === action.payload.name);
+
+      let playlist;
+      if (info !== -1)
+        playlist = state.playlist[info].songs.concat(action.payload.songs);
+      return {
+        ...state,
+        playlist: {
+          ...state.playlist,
+          playlist,
+        },
+      };
+
     default:
       return state;
   }
