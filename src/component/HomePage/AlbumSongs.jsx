@@ -35,11 +35,12 @@ class AlbumSongs extends React.Component {
 
     const data = await response.json();
 
-    if (data.data && data.data[0].artist)
+    if (data.data && data.data[0].artist) {
       this.setState({
         albums: data.data,
         artist: data.data[0].artist,
       });
+    }
   };
   render() {
     console.log(this.state.albums, this.state.artist, "datta");

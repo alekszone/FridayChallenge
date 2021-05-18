@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Styles from "../style.module.css";
 import { connect } from "react-redux";
+import { Form, Modal, Button } from "react-bootstrap";
 import { AiOutlineLike, AiTwotoneLike } from "react-icons/ai";
+import { RiPlayList2Fill } from "react-icons/ri";
 const mapStateToProps = (state) => state;
-const mapDispatchToProps = (dispatch, props) => ({
+const mapDispatchToProps = (dispatch) => ({
   singelSong: (playSong) =>
     dispatch({
       type: "playSong",
@@ -19,14 +21,31 @@ const mapDispatchToProps = (dispatch, props) => ({
       type: "likeSong",
       payload: likeSong,
     }),
+  addSongs: (playListName, song) => {
+    dispatch({
+      type: "addSongToPlatList",
+      payload: {
+        name: playListName,
+        songs: song,
+      },
+    });
+  },
 });
 
 class SingelSong extends Component {
   state = {
     likedSong: false,
+    show: false,
+    playListName: "",
+    playlistSong: [],
   };
+  handleClose = () => this.setState({ show: false });
+  handleShow = () => this.setState({ show: true });
   convertTime = (time) => {
     return (time - (time %= 60)) / 60 + (9 < time ? ":" : ":0") + time;
+  };
+  addToState = (song) => {
+    this.setState({ playlistSong: song });
   };
 
   playSong = (e) => {
@@ -35,15 +54,24 @@ class SingelSong extends Component {
     this.props.image(this.props.artist && this.props.artist.picture);
     console.log(e && e, "ca ka songs");
   };
+  addToProps = () => {
+    if (this.state.playListName > 0 && this.state.playlistSong > 0)
+      this.props.addSongs(this.state.playListName, this.state.playlistSong);
+    else alert("Please create a playlist ");
+  };
+  addName = (name) => {
+    if (name.length > 0) this.setState({ playListName: name });
+  };
 
   newSong = (song) => {
     this.props.likeSongs(song);
   };
   render() {
     console.log(
-      this.props.likedSong && this.props.likedSong,
-      "kjo vjen nga like button"
+      this.props.playlist && this.props.playlist,
+      "a i merr propsi kto"
     );
+    console.log(this.state.playlistSong, "fjejrgkekjrgkjhekjr");
 
     return (
       <div className={`${Styles.songs} mt-5`}>
@@ -73,13 +101,24 @@ class SingelSong extends Component {
                     // style={{ outline: "2px red solid" }}
                     className="d-flex justify-content-between"
                   >
+                    <RiPlayList2Fill
+                      style={{
+                        color: "white",
+                        fontSize: "30px",
+                        marginRight: "30px",
+                      }}
+                      onClick={() => {
+                        this.handleShow();
+                        this.addToState(song);
+                      }}
+                    />
                     {this.props.likedSong &&
                     this.props.likedSong.length > 0 &&
                     this.props.likedSong.find((x) => x.id === song.id) ? (
                       <AiTwotoneLike
                         style={{
                           color: "white",
-                          fontSize: "45px",
+                          fontSize: "30px",
                           marginRight: "30px",
                         }}
                       />
@@ -87,7 +126,7 @@ class SingelSong extends Component {
                       <AiOutlineLike
                         style={{
                           color: "white",
-                          fontSize: "45px",
+                          fontSize: "30px",
                           marginRight: "30px",
                         }}
                         onClick={() => this.newSong(song)}
@@ -110,6 +149,40 @@ class SingelSong extends Component {
               </div>
             );
           })}
+        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>Add To PlayList</Modal.Header>
+          <Modal.Body>
+            {this.props.playlist && this.props.playlist.length > 0 ? (
+              this.props.playlist.map((playlist) => {
+                return (
+                  <>
+                    <Button
+                      onClick={(e) => this.addName(e.currentTarget.value)}
+                    >
+                      {playlist.name}
+                    </Button>
+                  </>
+                );
+              })
+            ) : (
+              <h5>You Dont Have Playlist Created </h5>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                this.handleClose();
+                this.addToProps();
+              }}
+            >
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }

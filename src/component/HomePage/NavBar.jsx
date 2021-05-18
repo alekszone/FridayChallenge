@@ -41,7 +41,7 @@ const NavBar = (props) => {
                   onClick={() => props.history.push("/liked")}
                   style={{ cursor: "pointer", color: "white" }}
                 >
-                  <i class="fa fa-book  mr-3"></i>Your Library
+                  <i class="fa fa-book  mr-3"></i>Your Playlists
                 </a>
               </li>
             </ul>
