@@ -62,7 +62,7 @@ const NavBar = (props) => {
               <li className="nav-item w-100 mb-2">
                 <button
                   type="button"
-                  onclick="goToLogin()"
+                  onClick={() => props.history.push("/login")}
                   className="btn btn-secondary w-100 rounded-pill"
                   style={{
                     backgroundColor: " black",

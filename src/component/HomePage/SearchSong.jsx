@@ -2,7 +2,21 @@ import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import Styles from "../style.module.css";
 import { Card, Col, Row, Button } from "react-bootstrap";
-function SearchSong() {
+import { connect } from "react-redux";
+const mapStateToProps = (state) => state;
+const mapDispatchToProps = (dispatch, props) => ({
+  singelSong: (playSong) =>
+    dispatch({
+      type: "playSong",
+      payload: playSong,
+    }),
+  image: (image) =>
+    dispatch({
+      type: "image",
+      payload: image,
+    }),
+});
+function SearchSong(props) {
   const [fetchSearch, setFetchSearch] = useState([]);
   const fetchsongs = async (artist) => {
     const data = await fetch(
@@ -23,10 +37,17 @@ function SearchSong() {
       console.log("nothwefjiioe");
     }
   };
+
+  const playSong = (e) => {
+    const playSong = e;
+    props.singelSong(playSong);
+    props.image(e.artist && e.artist.picture);
+    console.log(e && e, "ca ka songs");
+  };
   console.log(fetchSearch, "ca ka mrena");
   return (
     <div className={`${Styles.home}`}>
-      <div className="d-flex justify-content-center mt-5">
+      <div className="d-flex justify-content-center mt-5 mb-5">
         <input
           type="text"
           onChange={(e) => fetchsongs(e.currentTarget.value)}
@@ -35,20 +56,20 @@ function SearchSong() {
           Search
         </Button>
       </div>
-      <Row>
+      <Row className="mr-2">
         {fetchSearch &&
           fetchSearch.map((song) => {
             return (
               <>
                 <Col lg={2} md={3} sm={6} xs={6}>
                   <Card
-                    style={{ width: "11rem" }}
-                    className={`${Styles.cards} mr-2 ml-2`}
+                    style={{ width: "11rem", height: "22rem" }}
+                    className={`${Styles.cards} mb-4 `}
                   >
                     <Card.Img
-                      // onClick={() =>
-                      //   props.history.push("/albums/" + artist.artist.name)
-                      // }
+                      onClick={() =>
+                        props.history.push("/albums/" + song.artist.name)
+                      }
                       variant="top"
                       src={song.album.cover_big}
                     />
@@ -57,13 +78,27 @@ function SearchSong() {
                         {song.title}
                       </Card.Text>
                       <span
-                      // onClick={() =>
-                      //   props.history.push("/albums/" + artist.artist.name)
-                      // }
+                        onClick={() =>
+                          props.history.push("/albums/" + song.artist.name)
+                        }
                       >
                         {song.artist.name}
                       </span>
                     </Card.Body>
+
+                    <button
+                      className="mb-2"
+                      style={{
+                        backgroundColor: "transparent",
+                        width: "40%",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        color: "white",
+                      }}
+                      onClick={() => playSong(song)}
+                    >
+                      Play
+                    </button>
                   </Card>
                   ;
                 </Col>
@@ -75,4 +110,7 @@ function SearchSong() {
   );
 }
 
-export default withRouter(SearchSong);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(SearchSong));
