@@ -14,7 +14,10 @@ function ArtistAlbum(props) {
           props.artists.map((artist, key) => (
             <>
               <Col lg={2} md={3} sm={6} xs={6}>
-                <Card style={{ width: "11rem" }} className={Style.cards}>
+                <Card
+                  style={{ width: "11rem", height: "22rem" }}
+                  className={Style.cards}
+                >
                   <Card.Img
                     onClick={() =>
                       props.history.push("/albums/" + artist.artist.name)

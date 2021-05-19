@@ -18,27 +18,26 @@ class App extends React.Component {
     return (
       <>
         {this.props.location.pathname !== "/login" &&
-          this.props.location.pathname !== "/singup" && (
-            <Router>
-              <Row className=" m-0 p-0">
-                <Col xs={12} sm={12} md={2} lg={2}>
-                  <NavBar />
-                </Col>
-                <Col xs={12} sm={12} md={10} lg={10} className=" p-0">
-                  <Route path="/" exact component={Home} />
-                  <Route path="/search" component={SearchSong} />
-                  <Route path="/albums/:name" component={AlbumsSongs} />
-                  <Route path="/songs/:name" component={Songs} />
-                  <Route path="/liked" component={SavedSongs} />
-                </Col>{" "}
-              </Row>
-              <Footer />
-            </Router>
-          )}
-        <Router>
-          <Route path="/singup" exact component={Singup} />
-          <Route path="/login" exact component={Login} />
-        </Router>
+        this.props.location.pathname !== "/singup" ? (
+          <Row className=" m-0 p-0">
+            <Col xs={12} sm={12} md={2} lg={2}>
+              <NavBar />
+            </Col>
+            <Col xs={12} sm={12} md={10} lg={10} className=" p-0">
+              <Route path="/" exact component={Home} />
+              <Route path="/search" component={SearchSong} />
+              <Route path="/albums/:name" component={AlbumsSongs} />
+              <Route path="/songs/:name" component={Songs} />
+              <Route path="/liked" component={SavedSongs} />
+            </Col>{" "}
+            <Footer />{" "}
+          </Row>
+        ) : (
+          <Router>
+            <Route path="/singup" exact component={Singup} />
+            <Route path="/login" exact component={Login} />
+          </Router>
+        )}
       </>
     );
   }
