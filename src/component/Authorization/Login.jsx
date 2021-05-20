@@ -1,11 +1,19 @@
 import React, { Component } from "react";
-import { Container, Image, Button, FormControl, Form } from "react-bootstrap";
+import {
+  Container,
+  Image,
+  Button,
+  FormControl,
+  Form,
+  Row,
+} from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
+import Styles from "./styles.module.css";
 export default class Login extends Component {
   render() {
     return (
       <>
-        <Container fluid className="loginPage">
+        <Container fluid className={`${Styles.loginPage}`}>
           <i
             className="fa fa-spotify"
             style={{ fontSize: "35px", color: "white" }}
@@ -13,11 +21,11 @@ export default class Login extends Component {
             Spotify
           </i>
         </Container>
-        <Container>
-          <div className="loginContent d-flex flex-column">
+        <Row className="m-0 p-0">
+          <div className={`${Styles.loginContent} d-flex flex-column`}>
             <span>To continue, log in to Spotify.</span>
             <Button
-              id="facebookBtn"
+              className={`${Styles.facebookBtn} `}
               onClick={() =>
                 alert(
                   "We haven't implemented this feature yet, you can log in with your credentials"
@@ -28,6 +36,7 @@ export default class Login extends Component {
             </Button>
             <Button
               id="appleBtn"
+              className={`${Styles.appleBtn} `}
               onClick={() =>
                 alert(
                   "We haven't implemented this feature yet, you can log in with your credentials"
@@ -66,7 +75,11 @@ export default class Login extends Component {
                 <Form.Group controlId="formBasicCheckbox">
                   <Form.Check type="checkbox" label="Remeber me" />
                 </Form.Group>
-                <Button variant="success" id="loginBtn" type="submit">
+                <Button
+                  variant="success"
+                  className={`${Styles.loginBtn} `}
+                  type="submit"
+                >
                   LOG IN
                 </Button>
               </div>
@@ -77,7 +90,7 @@ export default class Login extends Component {
               <div className="signupSection  d-flex flex-column">
                 <span>Don't have an account?</span>
                 <Button
-                  id="signupBtn"
+                  className={`${Styles.signupBtn} `}
                   // onClick={() => props.history.push("/login?signup")}
                 >
                   SIGN UP FOR SPOTIFY
@@ -92,7 +105,7 @@ export default class Login extends Component {
               </div>
             </Form>
           </div>
-        </Container>
+        </Row>
       </>
     );
   }

@@ -15,15 +15,6 @@ const mapDispatchToProps = (dispatch, props) => ({
       payload: listName,
     });
   },
-  addSongs: (playListName, song) => {
-    dispatch({
-      type: "addSongToPlatList",
-      payload: {
-        name: playListName,
-        songs: song,
-      },
-    });
-  },
 });
 
 class SavedSongs extends Component {
