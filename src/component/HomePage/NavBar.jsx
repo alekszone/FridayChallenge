@@ -55,7 +55,11 @@ const NavBar = (props) => {
           >
             <ul className="nav flex-column justify-content-center align-items-center w-100 ">
               <li className="nav-item w-100 mb-3">
-                <button type="button" class="btn btn-light  w-100 rounded-pill">
+                <button
+                  type="button"
+                  class="btn btn-light  w-100 rounded-pill"
+                  onClick={() => props.history.push("/singup")}
+                >
                   SIGN UP
                 </button>
               </li>
