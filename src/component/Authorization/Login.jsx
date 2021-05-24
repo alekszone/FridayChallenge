@@ -45,7 +45,10 @@ export default class Login extends Component {
             >
               CONTINUE WITH APPLE
             </Button>
-            <div className="d-flex justify-content-between">
+            <div
+              className="d-flex justify-content-between"
+              style={{ color: "white" }}
+            >
               <hr />
               <p>OR</p>
               <hr />
@@ -71,9 +74,13 @@ export default class Login extends Component {
                   className="mr-sm-2"
                 />
               </Form.Group>
-              <div className="d-flex justify-content-between">
+              <div className={`${Styles.logs} d-flex justify-content-between`}>
                 <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="Remeber me" />
+                  <Form.Check
+                    type="checkbox"
+                    label="Remeber me"
+                    style={{ color: "white" }}
+                  />
                 </Form.Group>
                 <Button
                   variant="success"
@@ -84,10 +91,10 @@ export default class Login extends Component {
                 </Button>
               </div>
               <div className="d-flex justify-content-center">
-                <Link to="">Forgot your password?</Link>
+                <Link to="#">Forgot your password?</Link>
               </div>
               <hr />
-              <div className="signupSection  d-flex flex-column">
+              <div className={`${Styles.signupSection} d-flex flex-column`}>
                 <span>Don't have an account?</span>
                 <Button
                   className={`${Styles.signupBtn} `}
