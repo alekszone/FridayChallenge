@@ -25,7 +25,7 @@ export default function (state = {}, action) {
       return {
         ...state,
         likedSong: state.likedSong.filter(
-          (item, index) => index !== action.payload
+          (item) => item.id !== action.payload.id
         ),
       };
 
@@ -36,7 +36,7 @@ export default function (state = {}, action) {
           state.playlist &&
           state.playlist.concat({ name: action.payload, songs: [] }),
       };
-      console.log(state.playlist, "si vjen e dhena ktu");
+
     case "addSongToPlatList":
       console.log("ca ka mrena kjo ", action.payload);
       const info =
