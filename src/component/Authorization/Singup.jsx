@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Container, Button, Form, FormControl } from "react-bootstrap";
+import Styles from "./styles.module.css";
 export default class Singup extends Component {
   render() {
     return (
       <>
-        <Container fluid className="signupPage">
+        <Container fluid className={`${Styles.signupPage} mt-4`}>
           <i
             className="fa fa-spotify"
             style={{ fontSize: "35px", color: "white" }}
@@ -13,7 +14,7 @@ export default class Singup extends Component {
           </i>
         </Container>
         <Container>
-          <div className="signupContent d-flex flex-column">
+          <div className={`${Styles.signupContent} d-flex flex-column`}>
             <span id="title">Sign up for free to start listening.</span>
             <Button
               id="facebookBtn"
