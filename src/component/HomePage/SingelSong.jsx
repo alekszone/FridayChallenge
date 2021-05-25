@@ -21,6 +21,11 @@ const mapDispatchToProps = (dispatch) => ({
       type: "likeSong",
       payload: likeSong,
     }),
+  dislikeSongs: (dislikeSong) =>
+    dispatch({
+      type: "dislikeSong",
+      payload: dislikeSong,
+    }),
   addSongs: (playListName, song) => {
     dispatch({
       type: "addSongToPlatList",
@@ -65,6 +70,10 @@ class SingelSong extends Component {
 
   newSong = (song) => {
     this.props.likeSongs(song);
+  };
+
+  removeSong = (song) => {
+    this.props.dislikeSongs(song);
   };
   render() {
     console.log(
@@ -121,6 +130,7 @@ class SingelSong extends Component {
                           fontSize: "30px",
                           marginRight: "30px",
                         }}
+                        onClick={() => this.removeSong(song)}
                       />
                     ) : (
                       <AiOutlineLike

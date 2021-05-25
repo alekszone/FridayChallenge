@@ -56,7 +56,7 @@ function SearchSong(props) {
           Search
         </Button>
       </div>
-      <Row className="mr-2">
+      <Row className="m-0 p-0 d-flex justify-content-space-around">
         {fetchSearch &&
           fetchSearch.map((song) => {
             return (
