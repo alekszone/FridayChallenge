@@ -50,11 +50,10 @@ function SearchSong(props) {
       <div className="d-flex justify-content-center mt-5 mb-5">
         <input
           type="text"
+          style={{ maxWidth: "250px" }}
+          placeholder="Search artist, song ?"
           onChange={(e) => fetchsongs(e.currentTarget.value)}
         ></input>
-        <Button className="" variant="success" style={{ color: "white" }}>
-          Search
-        </Button>
       </div>
       <Row className="m-0 p-0 d-flex justify-content-space-around">
         {fetchSearch &&
