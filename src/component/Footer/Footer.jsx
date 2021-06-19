@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Card } from "react-bootstrap";
+import { Col, Card, Row } from "react-bootstrap";
 
 import { connect } from "react-redux";
 
@@ -264,7 +264,6 @@ class Footer extends Component {
               src={this.props.playSong && this.props.playSong.preview}
             />
           </Col>
-
           <Col className="d-flex justify-content-end align-items-center mt-2 ">
             {!this.state.mute ? (
               <a className="pr-3" onClick={() => this.muteVolume()}>

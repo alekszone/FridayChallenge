@@ -64,7 +64,7 @@ class SavedSongs extends Component {
               <Card.Body>
                 <Card.Title style={{ color: "white" }}>Name</Card.Title>
 
-                <Button variant="primary" onClick={this.handleShow}>
+                <Button variant="success" onClick={this.handleShow}>
                   Create Playlist
                 </Button>
               </Card.Body>
@@ -92,7 +92,9 @@ class SavedSongs extends Component {
                   );
                 })
               ) : (
-                <h5>No Playlist Created</h5>
+                <h5 style={{ backgroundColor: "white" }}>
+                  No Playlist Created
+                </h5>
               )}
             </div>
             {this.state.songList &&

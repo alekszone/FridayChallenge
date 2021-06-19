@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import Styles from "./styles.module.css";
-export default class Login extends Component {
+class Login extends Component {
   render() {
     return (
       <>
@@ -86,6 +86,9 @@ export default class Login extends Component {
                   variant="success"
                   className={`${Styles.loginBtn} `}
                   type="submit"
+                  onClick={() =>
+                    alert("We haven't implemented this feature yet")
+                  }
                 >
                   LOG IN
                 </Button>
@@ -117,3 +120,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default withRouter(Login);

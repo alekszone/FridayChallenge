@@ -158,7 +158,13 @@ export default class Singup extends Component {
                   protects your personal data please read Spotify's
                   <span> Privacy Policy</span>.
                 </span>
-                <Button id="registerButton" type="submit">
+                <Button
+                  id="registerButton"
+                  type="submit"
+                  onClick={() =>
+                    alert("We haven't implemented this feature yet")
+                  }
+                >
                   SIGN UP
                 </Button>
                 <div className="d-flex justify-content-center">

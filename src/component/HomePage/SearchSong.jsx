@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import Styles from "../style.module.css";
-import { Card, Col, Row, Button } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
+import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
+
 import { connect } from "react-redux";
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch, props) => ({
@@ -18,6 +20,7 @@ const mapDispatchToProps = (dispatch, props) => ({
 });
 function SearchSong(props) {
   const [fetchSearch, setFetchSearch] = useState([]);
+  const [data, setData] = useState({});
   const fetchsongs = async (artist) => {
     const data = await fetch(
       `https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`,
@@ -44,7 +47,8 @@ function SearchSong(props) {
     props.image(e.artist && e.artist.picture);
     console.log(e && e, "ca ka songs");
   };
-  console.log(fetchSearch, "ca ka mrena");
+  console.log(props.playSong.id, "ca ka mrena");
+  console.log(fetchSearch, "ca ka mrena222222");
   return (
     <div className={`${Styles.home}`}>
       <div className="d-flex justify-content-center mt-5 mb-5">
@@ -62,7 +66,7 @@ function SearchSong(props) {
               <>
                 <Col lg={2} md={3} sm={6} xs={6}>
                   <Card
-                    style={{ width: "11rem", height: "22rem" }}
+                    style={{ width: "11rem", height: "20rem" }}
                     className={`${Styles.cards} mb-4 `}
                   >
                     <Card.Img
@@ -77,6 +81,7 @@ function SearchSong(props) {
                         {song.title}
                       </Card.Text>
                       <span
+                        className={`${Styles.textTitle}`}
                         onClick={() =>
                           props.history.push("/albums/" + song.artist.name)
                         }
@@ -84,22 +89,32 @@ function SearchSong(props) {
                         {song.artist.name}
                       </span>
                     </Card.Body>
+                    {props.playSong && props.playSong.id == song.id ? (
+                      <AiFillPauseCircle
+                        className="mb-2 mr-1"
+                        style={{
+                          backgroundColor: "transparent",
+                          height: "30px",
+                          marginLeft: "auto",
+                          width: "30px",
+                          color: "green",
+                        }}
+                      />
+                    ) : (
+                      <AiFillPlayCircle
+                        className="mb-2 mr-1"
+                        style={{
+                          backgroundColor: "transparent",
+                          height: "30px",
+                          width: "30px",
+                          marginLeft: "auto",
 
-                    <button
-                      className="mb-2"
-                      style={{
-                        backgroundColor: "transparent",
-                        width: "40%",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        color: "white",
-                      }}
-                      onClick={() => playSong(song)}
-                    >
-                      Play
-                    </button>
+                          color: "green",
+                        }}
+                        onClick={() => playSong(song)}
+                      />
+                    )}
                   </Card>
-                  ;
                 </Col>
               </>
             );
